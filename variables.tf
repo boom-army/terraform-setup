@@ -25,58 +25,6 @@ variable "availability_zones" {
     "us-west-2b"
   ]
 }
-variable "postgres_db_port" {
-  description = "Port exposed by the RDS instance"
-  default     = 5432
-}
-variable "rds_instance_type" {
-  description = "Instance type for the RDS database"
-  default     = "db.t4g.micro"
-}
-# Change database-1 to postgres
-variable "rds_identifier" {
-  description = "db identifier"
-  default     = "sosol-database-1"
-}
-variable "rds_storage_type" {
-  description = "db storage type"
-  default     = "io1"
-}
-variable "rds_iops" {
-  description = "db iops"
-  default     = 1000
-}
-# Change 20 to 5
-variable "rds_allocated_storage" {
-  description = "db allocated storage"
-  default     = 100
-}
-variable "rds_engine" {
-  description = "type of db engine"
-  default     = "postgres"
-}
-variable "rds_engine_version" {
-  description = "db engine version"
-  default     = "12.11"
-}
-variable "rds_database_name" {
-  description = "db worker name"
-  default     = "sosol_postgresdb_prod"
-}
-variable "rds_username" {
-  description = "Database administrator username"
-  type        = string
-  sensitive   = true
-}
-variable "rds_password" {
-  description = "Database administrator password"
-  type        = string
-  sensitive   = true
-}
-variable "rds_final_snapshot_identifier" {
-  description = "db final snapshot identifier"
-  default     = "worker-final"
-}
 variable "sosol_app_port" {
   description = "Port exposed by the sosol application"
   default     = 7777
@@ -166,4 +114,24 @@ variable "sentry_dsn" {
 variable "cors_origin" {
   description = "CORS origin"
   default     = "https://app.boom.army"
+}
+variable "postgres_credentials" {
+  type        = string
+  description = "The psql URL"
+  sensitive   = true
+}
+variable "postgres_endpoint" {
+  type        = string
+  description = "The psql URL"
+  default = "159.223.192.147:5432"
+}
+variable "postgres_db_name" {
+  type        = string
+  description = "The psql URL"
+  default = "sosol_postgresdb_prod"
+}
+variable "backend_node_count" {
+  type        = number
+  description = "The number of backend containers to run"
+  default = 3
 }

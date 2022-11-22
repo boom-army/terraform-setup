@@ -49,25 +49,3 @@ resource "aws_security_group" "ecs_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-
-# create security group for RDS
-resource "aws_security_group" "rds_sg" {
-  name        = "postgres-public-group"
-  description = "access to public rds instances"
-  vpc_id      = aws_vpc.vpc.id
-
-  ingress {
-    protocol        = "tcp"
-    from_port       = var.postgres_db_port
-    to_port         = var.postgres_db_port
-    cidr_blocks     = ["0.0.0.0/0"]
-    security_groups = [aws_security_group.alb_sg.id]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}

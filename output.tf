@@ -1,5 +1,5 @@
 output "postgres_endpoint" {
-  value = aws_db_instance.rds_instance.endpoint
+  value = "${var.postgres_endpoint}/${var.postgres_db_name}"
 }
 
 output "alb_dns_name" {
