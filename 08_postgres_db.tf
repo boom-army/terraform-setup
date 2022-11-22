@@ -22,7 +22,7 @@ resource "aws_db_instance" "rds_instance" {
   storage_encrypted           = false
   skip_final_snapshot         = true
   final_snapshot_identifier   = var.rds_final_snapshot_identifier
-  deletion_protection         = true
+  deletion_protection         = false
   # enabled_cloudwatch_logs_exports = ["postgresql", "upgrade"]
   ## disable backups to create DB faster
   # maintenance_window = "sun:09:00-sun:10:00"
