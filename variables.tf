@@ -133,5 +133,5 @@ variable "postgres_db_name" {
 variable "backend_node_count" {
   type        = number
   description = "The number of backend containers to run"
-  default = 1
+  default = 2
 }
