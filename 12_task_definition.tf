@@ -23,6 +23,7 @@ resource "aws_ecs_task_definition" "task_definition" {
     ONESIGNAL_APP_ID  = var.onesignal_app_id
     ONESIGNAL_API_KEY = var.onesignal_api_key
     CORS_ORIGIN       = var.cors_origin
+    API_ORIGIN        = var.api_origin
     SENTRY_DSN        = var.sentry_dsn
   })
 }

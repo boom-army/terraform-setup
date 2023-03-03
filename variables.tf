@@ -115,6 +115,10 @@ variable "cors_origin" {
   description = "CORS origin"
   default     = "https://app.boom.army"
 }
+variable "api_origin" {
+  description = "CORS origin"
+  default     = "https://api.boom.army"
+}
 variable "postgres_credentials" {
   type        = string
   description = "The psql URL"

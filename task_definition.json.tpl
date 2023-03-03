@@ -64,6 +64,10 @@
         "value": "${CORS_ORIGIN}"
       },
       {
+        "name": "API_ORIGIN",
+        "value": "${API_ORIGIN}"
+      },
+      {
         "name": "SENTRY_DSN",
         "value": "${SENTRY_DSN}"
       }
