@@ -113,7 +113,7 @@ variable "sentry_dsn" {
 }
 variable "cors_origin" {
   description = "CORS origin"
-  default     = "https://app.boom.army"
+  default     = "https://boom.army"
 }
 variable "api_origin" {
   description = "CORS origin"
