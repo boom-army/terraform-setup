@@ -116,12 +116,12 @@ variable "cors_origin" {
   default     = "https://boom.army"
 }
 variable "api_origin" {
-  description = "CORS origin"
+  description = "API origin"
   default     = "https://api.boom.army"
 }
 variable "postgres_credentials" {
   type        = string
-  description = "The psql URL"
+  description = "The psql creds"
   sensitive   = true
 }
 variable "postgres_endpoint" {
@@ -131,7 +131,7 @@ variable "postgres_endpoint" {
 }
 variable "postgres_db_name" {
   type        = string
-  description = "The psql URL"
+  description = "The psql db name"
   default = "sosol_postgresdb_prod"
 }
 variable "backend_node_count" {
