@@ -52,7 +52,7 @@ variable "sosol_app_name" {
 }
 variable "health_check_path" {
   description = "Http path for task health check"
-  default     = "/.well-known/apollo/server-health"
+  default     = "/health"
 }
 variable "aws_key" {
   description = "AWS key for sosol"
