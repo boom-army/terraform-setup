@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "task_definition" {
     AWS_ACCESS_KEY_ID = var.aws_key
     AWS_BUCKET_NAME   = var.aws_bucket
     AWS_REGION        = var.region
-    AWS_SECRET_KEY    = var.aws_secret_key
+    AWS_SECRET_ACCESS_KEY    = var.aws_secret_access_key
     CLOUDWATCH_GROUP  = aws_cloudwatch_log_group.logs.name
     DATABASE_URL      = "postgresql://${var.postgres_credentials}@${var.postgres_endpoint}/${var.postgres_db_name}?schema=public&connection_limit=10&pool_timeout=120"
     JWT_SECRET        = replace(random_string.sosol_secret_key.result, "\"", "")

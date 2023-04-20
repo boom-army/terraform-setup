@@ -59,7 +59,7 @@ variable "aws_key" {
   type        = string
   sensitive   = true
 }
-variable "aws_secret_key" {
+variable "aws_secret_access_key" {
   description = "AWS secret key for sosol"
   type        = string
   sensitive   = true
@@ -68,13 +68,9 @@ variable "aws_bucket" {
   description = "S3 bucket for content"
   default     = "sosol-prod"
 }
-variable "aws_bucket_name" {
+variable "aws_bucket_dev" {
   description = "S3 bucket for content"
-  default     = "my.sosol.app"
-}
-variable "aws_bucket_new" {
-  description = "S3 bucket for content"
-  default     = "boom-army-prod"
+  default     = "sosol-dev"
 }
 variable "domain" {
   type        = string

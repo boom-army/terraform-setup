@@ -40,8 +40,8 @@
         "value": "${AWS_ACCESS_KEY_ID}"
       },
       {
-        "name": "AWS_SECRET_KEY",
-        "value": "${AWS_SECRET_KEY}"
+        "name": "AWS_SECRET_ACCESS_KEY",
+        "value": "${AWS_SECRET_ACCESS_KEY}"
       },
       {
         "name": "AWS_BUCKET_NAME",
