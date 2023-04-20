@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 resource "aws_s3_bucket" "app" {
   bucket = var.domain
   acl    = "public-read"
@@ -45,20 +47,44 @@ resource "aws_s3_bucket" "sosol_prod" {
   }
 }
 
-resource "aws_s3_bucket_policy" "sosol_prod" {
+resource "aws_s3_bucket_policy" "sosol_prod_policy" {
   bucket = aws_s3_bucket.sosol_prod.id
+
   policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
+    "Version" = "2012-10-17"
+    "Statement" = [
       {
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:*"
-        Resource = [
-          aws_s3_bucket.sosol_prod.arn,
-          "${aws_s3_bucket.sosol_prod.arn}/*",
+        "Effect" = "Allow"
+        "Principal" = "*"
+        "Action" = [
+          "s3:ListBucket"
+        ]
+        "Resource" = [
+          aws_s3_bucket.sosol_prod.arn
         ]
       },
+      {
+        "Effect" = "Allow"
+        "Principal" = "*"
+        "Action" = [
+          "s3:GetObject"
+        ]
+        "Resource" = [
+          "${aws_s3_bucket.sosol_prod.arn}/*"
+        ]
+      },
+      {
+        "Effect" = "Allow"
+        "Principal" = {
+          "AWS" = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+        }
+        "Action" = [
+          "s3:PutObject"
+        ]
+        "Resource" = [
+          "${aws_s3_bucket.sosol_prod.arn}/*"
+        ]
+      }
     ]
   })
 }
@@ -75,20 +101,44 @@ resource "aws_s3_bucket" "sosol_dev" {
   }
 }
 
-resource "aws_s3_bucket_policy" "sosol_dev" {
+resource "aws_s3_bucket_policy" "sosol_dev_policy" {
   bucket = aws_s3_bucket.sosol_dev.id
+
   policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
+    "Version" = "2012-10-17"
+    "Statement" = [
       {
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:*"
-        Resource = [
-          aws_s3_bucket.sosol_dev.arn,
-          "${aws_s3_bucket.sosol_dev.arn}/*",
+        "Effect" = "Allow"
+        "Principal" = "*"
+        "Action" = [
+          "s3:ListBucket"
+        ]
+        "Resource" = [
+          aws_s3_bucket.sosol_dev.arn
         ]
       },
+      {
+        "Effect" = "Allow"
+        "Principal" = "*"
+        "Action" = [
+          "s3:GetObject"
+        ]
+        "Resource" = [
+          "${aws_s3_bucket.sosol_dev.arn}/*"
+        ]
+      },
+      {
+        "Effect" = "Allow"
+        "Principal" = {
+          "AWS" = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+        }
+        "Action" = [
+          "s3:PutObject"
+        ]
+        "Resource" = [
+          "${aws_s3_bucket.sosol_dev.arn}/*"
+        ]
+      }
     ]
   })
 }
