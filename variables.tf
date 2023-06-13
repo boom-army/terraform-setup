@@ -146,7 +146,7 @@ variable "redis_port" {
   default     = 15873
 }
 variable "redis_user" {
-  type        = number
+  type        = string
   description = "The redis db"
   sensitive   = true
 }
