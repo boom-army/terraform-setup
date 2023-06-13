@@ -123,15 +123,35 @@ variable "postgres_credentials" {
 variable "postgres_endpoint" {
   type        = string
   description = "The psql URL"
-  default = "159.223.192.147:5432"
+  default     = "159.223.192.147:5432"
 }
 variable "postgres_db_name" {
   type        = string
   description = "The psql db name"
-  default = "sosol_postgresdb_prod"
+  default     = "sosol_postgresdb_prod"
 }
 variable "backend_node_count" {
   type        = number
   description = "The number of backend containers to run"
-  default = 2
+  default     = 2
+}
+variable "redis_host" {
+  type        = string
+  description = "The redis host"
+  default     = "redis-15873.c285.us-west-2-2.ec2.cloud.redislabs.com"
+}
+variable "redis_port" {
+  type        = number
+  description = "The redis port"
+  default     = 15873
+}
+variable "redis_user" {
+  type        = number
+  description = "The redis db"
+  sensitive   = true
+}
+variable "redis_password" {
+  type        = string
+  description = "The redis password"
+  sensitive   = true
 }

@@ -70,6 +70,22 @@
       {
         "name": "SENTRY_DSN",
         "value": "${SENTRY_DSN}"
+      },
+      {
+        "name":"REDIS_HOST",
+        "value":"${REDIS_HOST}" 
+      },
+      {
+        "name":"REDIS_PORT",
+        "value":"${REDIS_PORT}" 
+      },
+      {
+        "name":"REDIS_USER",
+        "value":"${REDIS_USER}" 
+      },
+      {
+        "name":"REDIS_PASSWORD",
+        "value":"${REDIS_PASSWORD}" 
       }
     ]
   }
