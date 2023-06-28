@@ -52,3 +52,4 @@ override.tf.json
 .idea/
 
 db-backup
+secrets

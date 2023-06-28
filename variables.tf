@@ -155,3 +155,13 @@ variable "redis_password" {
   description = "The redis password"
   sensitive   = true
 }
+variable "pem_cert" {
+  type        = string
+  description = "The path to the pem file"
+  sensitive   = true
+}
+variable "pem_key" {
+  type        = string
+  description = "The path to the key file"
+  sensitive   = true
+}

@@ -9,15 +9,15 @@ resource "aws_alb" "alb" {
 # point redirected traffic to the app
 resource "aws_alb_target_group" "target_group" {
   name        = "ecs-target-group"
-  port        = 80
-  protocol    = "HTTP"
+  port        = 443
+  protocol    = "HTTPS"
   vpc_id      = aws_vpc.vpc.id
   target_type = "ip"
 
   health_check {
     healthy_threshold   = "3"
     interval            = "30"
-    protocol            = "HTTP"
+    protocol            = "HTTPS"
     matcher             = "200"
     timeout             = "5"
     path                = var.health_check_path
@@ -34,3 +34,22 @@ resource "aws_alb_listener" "fp_alb_listener" {
     type             = "forward"
   }
 }
+
+resource "aws_acm_certificate" "cert" {
+  private_key      = file(var.pem_key)
+  certificate_body = file(var.pem_cert)
+}
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_alb.alb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = aws_acm_certificate.cert.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_alb_target_group.target_group.arn
+  }
+}
+
