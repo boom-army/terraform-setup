@@ -7,7 +7,7 @@ data "cloudflare_zones" "domain" {
 resource "cloudflare_record" "site_cname" {
   zone_id = data.cloudflare_zones.domain.zones[0].id
   name    = "app"
-  value   = aws_s3_bucket.app.website_endpoint
+  value   = aws_s3_bucket.app.bucket_regional_domain_name
   type    = "CNAME"
 
   ttl     = 1
