@@ -27,7 +27,7 @@ resource "aws_ecs_service" "sosol_service" {
   }
 
   depends_on = [
-    aws_lb_listener.https_listener
+    aws_alb_listener.https_listener
   ]
 
   # lifecycle {
