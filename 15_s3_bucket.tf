@@ -14,10 +14,6 @@ resource "aws_s3_bucket" "app" {
     allowed_origins = ["*"]
     expose_headers  = ["Content-Range", "Content-Length", "ETag"]
   }
-  logging {
-    target_bucket = aws_s3_bucket.boom_logs.id
-    target_prefix = "logs/"
-  }
 }
 
 resource "aws_s3_bucket_policy" "app_public_read" {
@@ -145,8 +141,4 @@ resource "aws_s3_bucket_policy" "sosol_dev_policy" {
       }
     ]
   })
-}
-
-resource "aws_s3_bucket" "boom_logs" {
-  bucket = "boom-logging"
 }
