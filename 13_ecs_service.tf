@@ -6,10 +6,10 @@ resource "aws_ecs_service" "sosol_service" {
   deployment_minimum_healthy_percent = 50
   # health_check_grace_period_seconds  = 300
   # deployment_maximum_percent         = 200
-  launch_type                        = "FARGATE"
-  scheduling_strategy                = "REPLICA"
-  enable_ecs_managed_tags            = true
-  enable_execute_command             = true
+  launch_type             = "FARGATE"
+  scheduling_strategy     = "REPLICA"
+  enable_ecs_managed_tags = true
+  enable_execute_command  = true
 
   network_configuration {
     security_groups = [
@@ -27,7 +27,7 @@ resource "aws_ecs_service" "sosol_service" {
   }
 
   depends_on = [
-    aws_alb_listener.fp_alb_listener
+    aws_lb_listener.https_listener
   ]
 
   # lifecycle {

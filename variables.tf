@@ -155,13 +155,13 @@ variable "redis_password" {
   description = "The redis password"
   sensitive   = true
 }
-variable "pem_cert" {
+variable "acm_certificate_arn_west" {
+  description = "The Amazon Resource Number (ARN) of the West AWS ACM certificate"
   type        = string
-  description = "The path to the pem file"
   sensitive   = true
 }
-variable "pem_key" {
+variable "acm_certificate_arn_east" {
+  description = "The Amazon Resource Number (ARN) of the East AWS ACM certificate"
   type        = string
-  description = "The path to the key file"
   sensitive   = true
 }

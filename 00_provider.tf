@@ -13,7 +13,13 @@ terraform {
 
 provider "aws" {
   profile = "default"
-  region  = var.region
+  region  = "us-west-2"
+}
+
+provider "aws" {
+  profile = "default"
+  region  = "us-east-1"
+  alias   = "useast1"
 }
 
 provider "cloudflare" {
