@@ -12,9 +12,8 @@ resource "aws_ecs_service" "sosol_service" {
   enable_execute_command  = true
 
   network_configuration {
-    security_groups = [
-    aws_security_group.ecs_sg.id]
-    subnets = aws_subnet.public_subnets.*.id
+    security_groups = [aws_security_group.ecs_sg.id]
+    subnets         = aws_subnet.public_subnets.*.id
     # subnets = aws_subnet.private_subnets.*.id
     assign_public_ip = true
     # assign_public_ip = false

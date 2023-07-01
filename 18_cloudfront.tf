@@ -1,9 +1,8 @@
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Identity for Boom s3 bucket access"
+  comment = "Identity for Boom S3 bucket access"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
-
   origin {
     domain_name = aws_s3_bucket.app.bucket_regional_domain_name
     origin_id   = var.domain
@@ -17,6 +16,13 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   is_ipv6_enabled     = true
   comment             = "Boom S3 bucket distribution"
   default_root_object = "index.html"
+
+  custom_error_response {
+    error_caching_min_ttl = 0
+    error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
 
   aliases = [var.domain]
 
@@ -58,4 +64,3 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     Name        = "boom_s3_distribution"
   }
 }
-
