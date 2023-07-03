@@ -51,7 +51,7 @@ resource "aws_route53_record" "meet" {
   name    = "meet"
   type    = "A"
   ttl     = "300"
-  records = ["54.191.254.144"]
+  records = ["44.228.67.109"]
 }
 
 resource "aws_route53_record" "mail_a" {
