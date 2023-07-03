@@ -49,9 +49,9 @@ resource "aws_route53_record" "docs" {
 resource "aws_route53_record" "meet" {
   zone_id = aws_route53_zone.main.zone_id
   name    = "meet"
-  type    = "CNAME"
+  type    = "A"
   ttl     = "300"
-  records = ["ec2-35-84-44-236.us-west-2.compute.amazonaws.com"]
+  records = ["54.191.254.144"]
 }
 
 resource "aws_route53_record" "mail_a" {
