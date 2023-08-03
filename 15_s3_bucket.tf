@@ -15,6 +15,10 @@ resource "aws_s3_bucket" "app" {
     allowed_origins = ["*"]
     expose_headers  = ["Content-Range", "Content-Length", "ETag"]
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_s3_bucket_policy" "app_public_read" {
