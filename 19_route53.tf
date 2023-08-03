@@ -51,7 +51,7 @@ resource "aws_route53_record" "meet" {
   name    = "meet"
   type    = "A"
   ttl     = "300"
-  records = ["44.228.67.109"]
+  records = ["52.26.212.204"]
 }
 
 resource "aws_route53_record" "mail_a" {
@@ -68,4 +68,12 @@ resource "aws_route53_record" "mail_mx" {
   type    = "MX"
   ttl     = "300"
   records = ["10 mail.boom.army"]
+}
+
+resource "aws_route53_record" "social" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "social"
+  type    = "CNAME"
+  ttl     = "300"
+  records = ["vip.masto.host"]
 }

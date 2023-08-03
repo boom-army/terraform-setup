@@ -46,6 +46,10 @@ resource "aws_s3_bucket" "sosol_prod" {
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_s3_bucket_policy" "sosol_prod_policy" {
